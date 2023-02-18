@@ -6,7 +6,6 @@
 #include <net/sock.h>
 #include <linux/inet.h>
 
-
 #define SERVER_IP "127.0.0.1"
 #define SERVER_PORT 6244
 #define BUF_LEN 1024
@@ -93,9 +92,9 @@ int tcp_client_connect(void)
         printk(KERN_ERR "Failed to create socket: %d\n", ret);
         return ret;
     }
-    
-     printk(KERN_INFO "Before memset..\n");
 
+    printk(KERN_INFO "Before memset..\n");
+    // segmentation fault
     memset(&saddr, 0, sizeof(struct sockaddr_in));
     saddr.sin_family = AF_INET;
     saddr.sin_port = htons(SERVER_PORT);
